@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: service
+    env: docker
+    repo: https://github.com/MansourWolou/honeyApi.git
+    region: frankfurt # optional (defaults to oregon)
+    plan: standard # optional (defaults to starter)
+    branch: main # optional (defaults to master)
+
+databases:
+  - name: honey_db
+    databaseName: honey_db # optional (Render may add a suffix)
+    user: honey # optional
+    ipAllowList: # optional (defaults to allow all)
+      - source: 0.0.0.0/0
+        description: any
