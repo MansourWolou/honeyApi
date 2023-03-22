@@ -1,0 +1,30 @@
+version: "3.8"
+
+services:
+  honey_db:
+    image: postgres
+    container_name: honey_db
+    restart: unless-stopped
+    ports:
+      - "5432:54232"
+    environment:
+      POSTGRES_DB: honey_db
+      POSTGRES_USER: honey
+      POSTGRES_PASSWORD: Miel/sucre
+    volumes:
+      - honey:/var/lib/postgres/honey
+    networks:
+      - honeyNetwork
+  app_service:
+    build: .
+    container_name: honey_serv
+    ports:
+      - "8080:8080"
+    depends_on:
+      - honey_db
+    networks:
+      - honeyNetwork
+volumes:
+  honey:
+networks:
+  honeyNetwork:
