@@ -2,6 +2,6 @@
 FROM eclipse-temurin:17
 WORKDIR /honeyApi
 CMD ["pwd"]
-COPY /honey/target/honey-0.0.1-SNAPSHOT.jar /opt/app/honey-0.0.1-SNAPSHOT.jar
+COPY /honeyApi/honey/target/honey-0.0.1-SNAPSHOT.jar /opt/app/honey-0.0.1-SNAPSHOT.jar
 EXPOSE 8080
 ENTRYPOINT ["java","-jar","/opt/app/honey-0.0.1-SNAPSHOT.jar"]
