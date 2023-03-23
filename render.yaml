@@ -1,16 +1,12 @@
-services:
-  - type: web
-    name: service
-    env: docker
-    repo: https://github.com/MansourWolou/honeyApi.git
-    region: frankfurt # optional (defaults to oregon)
-    plan: standard # optional (defaults to starter)
-    branch: main # optional (defaults to master)
-
-databases:
-  - name: honey_db
-    databaseName: honey_db # optional (Render may add a suffix)
-    user: honey # optional
-    ipAllowList: # optional (defaults to allow all)
-      - source: 0.0.0.0/0
-        description: any
+name: <your-service-name>
+env:
+  JAVA_OPTS: "-Dserver.port=$PORT $JAVA_OPTS"
+build:
+  image: 'render.com/images/jvm:17'
+  dockerfile: Dockerfile
+  environment:
+    - DATABASE_URL=jdbc:postgresql://dpg-cgdfv002qv2aq5lksop0-a:5432/honey
+    - DATABASE_USER=honey
+    - DATABASE_PASSWORD=jcKOYDXEym2wrZ2Vf53f97mwTdHsX9zO
+web:
+  command: java $JAVA_OPTS -jar app.jar
