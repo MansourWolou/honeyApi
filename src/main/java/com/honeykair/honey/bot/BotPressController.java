@@ -8,13 +8,19 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class BotPressController {
+    String botAnswer;
     @PostMapping("/bot/getBotState")
     public String getBotState(@RequestBody String req){
+        botAnswer = req;
         System.out.println(req); return  req;
     }
 
     @PostMapping("/bot/getUserState")
     public String getUserState(@RequestBody String res ){
+        return res;
+    }
+    @GetMapping("/bot/hookResponse")
+    public Object getHookRes(@RequestBody Object res ){
         return res;
     }
 }
