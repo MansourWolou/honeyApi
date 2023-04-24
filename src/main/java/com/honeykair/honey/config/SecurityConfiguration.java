@@ -25,6 +25,7 @@ public class SecurityConfiguration {
                 .authorizeHttpRequests()
                     .requestMatchers("/api/v1/auth/**").permitAll()
                     .requestMatchers("/").permitAll()
+                    .requestMatchers("/bot/**").permitAll()
                     .anyRequest().authenticated()
                 .and()
                 .sessionManagement()
