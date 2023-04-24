@@ -8,11 +8,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class BotPressController {
-    String botAnswer;
+    Object botAnswer;
     @PostMapping("/bot/getBotState")
-    public String getBotState(@RequestBody String req){
+    public String getBotState(@RequestBody Object req){
         botAnswer = req;
-        System.out.println(req); return  req;
+        System.out.println(req); return  req.toString();
     }
 
     @PostMapping("/bot/getUserState")
@@ -20,7 +20,7 @@ public class BotPressController {
         return res;
     }
     @GetMapping("/bot/hookResponse")
-    public Object getHookRes(@RequestBody Object res ){
-        return res;
+    public Object getHookRes( ){
+        return botAnswer;
     }
 }
